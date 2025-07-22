@@ -290,10 +290,10 @@ git push origin feature/new-analytics-component
 
 **Kritin Kaul** - Full-Stack Developer specializing in React, Next.js, and API integrations
 
-- 🔗 **Portfolio**: [your-portfolio.com](https://your-portfolio.com)
-- 💼 **LinkedIn**: [linkedin.com/in/kritin-kaul](https://linkedin.com/in/kritin-kaul)
-- 📧 **Email**: [your-email@example.com](mailto:your-email@example.com)
-- 🐱 **GitHub**: [@your-username](https://github.com/your-username)
+
+- 💼 **LinkedIn**: [linkedin.com/in/kritin-kaul](https://linkedin.com/in/kritinkaul)
+- 📧 **Email**: [your-email@example.com](mailto:kritinkaul@gmail.com)
+
 
 *Open to opportunities in music technology, analytics platforms, and full-stack development roles.*
 
