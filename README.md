@@ -26,7 +26,7 @@ ArtistPulse is a **comprehensive music analytics dashboard** that demonstrates f
 ### **� Key Value Propositions**
 - **For Artists**: Track cross-platform performance, understand audience demographics, and discover market opportunities
 - **For Managers**: Make data-driven decisions on tour planning, marketing campaigns, and career strategy
-- **For Recruiters**: Showcases advanced React development, API integration, data visualization, and UI/UX design skills
+- Showcases advanced React development, API integration, data visualization, and UI/UX design skills
 
 ---
 
@@ -286,16 +286,16 @@ git push origin feature/new-analytics-component
 
 ---
 
-## 👨‍� **About the Developer**
+## 👨‍� **Find me!**
 
-**Kritin Kaul** - Full-Stack Developer specializing in React, Next.js, and API integrations
+**Kritin - Full-Stack Developer specializing in React, Next.js, and API integrations
 
 
 - 💼 **LinkedIn**: [linkedin.com/in/kritin-kaul](https://linkedin.com/in/kritinkaul)
 - 📧 **Email**: [your-email@example.com](mailto:kritinkaul@gmail.com)
 
 
-*Open to opportunities in music technology, analytics platforms, and full-stack development roles.*
+
 
 ---
 
@@ -309,7 +309,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   
   **⭐ If this project demonstrates the skills you're looking for, please star the repository!**
   
-  *Built with ❤️ and attention to detail by Kritin Kaul*
+  *Built  by Kritin*
   
   [🚀 **View Live Demo**](https://your-deployment-url.vercel.app) • [📊 **See More Projects**](https://your-portfolio.com)
   
