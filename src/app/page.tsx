@@ -124,53 +124,85 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 grid-background opacity-30"></div>
-      {/* Floating Data Particles (client-only to avoid hydration mismatches) */}
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Enhanced Animated Background Grid with Musical Pulse */}
+      <div className="absolute inset-0 grid-background opacity-50"></div>
+      
+      {/* Enhanced Floating Musical Particles (client-only to avoid hydration mismatches) */}
       {mounted && (
-        <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
-            />
-          ))}
-        </div>
+        <>
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {Array.from({ length: 30 }).map((_, i) => {
+              const colors = ['#00d9ff', '#b537f2', '#ff00a8', '#00ff88'];
+              const color = colors[i % colors.length];
+              return (
+                <div
+                  key={i}
+                  className="absolute rounded-full animate-float"
+                  style={{
+                    width: `${Math.random() * 4 + 2}px`,
+                    height: `${Math.random() * 4 + 2}px`,
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    background: color,
+                    boxShadow: `0 0 ${Math.random() * 20 + 10}px ${color}`,
+                    animationDelay: `${Math.random() * 5}s`,
+                    animationDuration: `${3 + Math.random() * 4}s`,
+                    opacity: 0.6
+                  }}
+                />
+              );
+            })}
+          </div>
+          
+          {/* Musical Waveform Bars */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 flex items-end justify-center gap-1 opacity-20 pointer-events-none">
+            {Array.from({ length: 50 }).map((_, i) => (
+              <div
+                key={i}
+                className="w-1 bg-gradient-to-t from-neon-cyan via-neon-purple to-neon-pink rounded-t-full equalizer-bar"
+                style={{
+                  animationDelay: `${i * 0.05}s`,
+                  animationDuration: `${1 + Math.random() * 0.5}s`
+                }}
+              />
+            ))}
+          </div>
+        </>
       )}
 
-      {/* Header */}
-      <header className="relative z-10 border-b border-gray-800/50 backdrop-blur-xl">
+      {/* Premium Header with Musical Theme */}
+      <header className="relative z-10 border-b border-neon-cyan/20 glass-strong">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center gap-4">
               <div className="relative group">
-                <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center cyber-glow">
-                  <BarChart3 className="h-6 w-6 text-white" />
+                {/* Animated Glow Effect */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink rounded-2xl opacity-75 blur-lg group-hover:opacity-100 transition duration-500 animate-pulse-glow"></div>
+                <div className="relative w-14 h-14 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-2xl flex items-center justify-center cyber-glow shadow-neon-cyan vinyl-spin">
+                  <BarChart3 className="h-8 w-8 text-white drop-shadow-lg" />
                 </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse" />
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-neon-green to-emerald-400 rounded-full animate-pulse shadow-neon-green" />
               </div>
-              <div className="ml-3">
-                <h1 className="text-xl font-bold text-white">ArtistPulse</h1>
-                <p className="text-xs text-cyan-400 font-mono">v2.0 • HIGH-FREQUENCY DATA</p>
+              <div className="ml-2">
+                <h1 className="text-2xl font-bold text-white tracking-tight gradient-text" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                  ArtistPulse
+                </h1>
+                <p className="text-xs text-neon-cyan font-mono tracking-wider animate-pulse">
+                  v2.0 • LIVE MUSIC ANALYTICS
+                </p>
               </div>
             </div>
             
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center text-sm font-medium text-gray-300">
-                <span className="text-cyan-400 font-mono">Made by</span>
-                <span className="ml-2 text-white font-semibold">Kritin</span>
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center text-sm font-medium">
+                <span className="text-neon-cyan font-mono tracking-wide">Created by</span>
+                <span className="ml-2 text-white font-bold text-glow">Kritin</span>
               </div>
               
-              <div className="flex items-center text-xs font-mono text-gray-400">
-                <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
-                LIVE
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-neon-green/10 border border-neon-green/30">
+                <div className="w-2.5 h-2.5 bg-neon-green rounded-full animate-pulse shadow-neon-green" />
+                <span className="text-xs font-mono text-neon-green font-semibold tracking-wider">LIVE</span>
               </div>
             </div>
           </div>
@@ -187,120 +219,226 @@ export default function Home() {
         {!artistData ? (
           // Data Analysis Dashboard
           <>
-            {/* Command Center Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-gray-900 rounded-2xl border border-cyan-500/30 cyber-glow mb-6 scan-line">
-                <Database className="h-12 w-12 text-cyan-400" />
+            {/* Command Center Header with Musical Theme */}
+            <div className="text-center mb-16">
+              <div className="relative inline-flex items-center justify-center mb-8">
+                {/* Animated Glow Rings */}
+                <div className="absolute w-32 h-32 rounded-full bg-neon-cyan/20 blur-2xl animate-pulse-glow"></div>
+                <div className="absolute w-24 h-24 rounded-full bg-neon-purple/20 blur-xl animate-pulse-glow" style={{ animationDelay: '0.5s' }}></div>
+                
+                {/* Main Icon Container */}
+                <div className="relative w-28 h-28 glass-musical rounded-3xl border-2 border-neon-cyan/40 cyber-glow sound-ripple flex items-center justify-center">
+                  <Database className="h-14 w-14 text-neon-cyan drop-shadow-lg" />
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-neon-pink to-neon-purple rounded-full flex items-center justify-center animate-bounce-slow shadow-neon-pink">
+                    <Music className="h-4 w-4 text-white" />
+                  </div>
+                </div>
               </div>
-              <h1 className="text-4xl font-bold text-white mb-4">
-                ARTIST INTELLIGENCE
-                <span className="block text-lg font-mono text-cyan-400 mt-2">PLATFORM</span>
+              
+              <h1 className="text-5xl font-bold text-white mb-4 tracking-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                <span className="text-gradient-animate">ARTIST INTELLIGENCE</span>
+                <span className="block text-xl font-mono text-neon-cyan mt-3 tracking-widest animate-pulse">
+                  🎵 MUSIC ANALYTICS PLATFORM 🎵
+                </span>
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Advanced multi-platform analytics engine providing real-time insights across 
-                <span className="text-cyan-400 font-semibold"> Spotify</span>, 
-                <span className="text-purple-400 font-semibold"> YouTube</span>, 
-                <span className="text-blue-400 font-semibold"> Twitter</span>, 
-                <span className="text-orange-400 font-semibold"> Reddit</span>, and 
-                <span className="text-red-400 font-semibold"> Last.fm</span>
+              
+              <p className="text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+                Advanced multi-platform analytics engine providing real-time insights across{' '}
+                <span className="text-neon-green font-bold text-glow">Spotify</span>,{' '}
+                <span className="text-neon-purple font-bold text-glow-purple">YouTube</span>,{' '}
+                <span className="text-neon-cyan font-bold text-glow">Twitter</span>,{' '}
+                <span className="text-neon-pink font-bold text-glow-pink">Reddit</span>, and{' '}
+                <span className="text-red-400 font-bold">Last.fm</span>
               </p>
             </div>
 
-            {/* Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {metrics.map((metric, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-900/70 backdrop-blur-xl rounded-xl border border-gray-700/50 p-6 hover:border-cyan-500/50 transition-all duration-300 cyber-glow data-pulse"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <metric.icon className="h-8 w-8 text-cyan-400" />
-                    <span className="text-xs font-mono text-gray-500">#{index + 1}</span>
+            {/* Enhanced Metrics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {metrics.map((metric, index) => {
+                const glowColors = ['neon-cyan', 'neon-purple', 'neon-blue', 'neon-green'];
+                const glowColor = glowColors[index % glowColors.length];
+                return (
+                  <div
+                    key={index}
+                    className="group relative glass-strong rounded-2xl border-2 border-neon-cyan/20 p-6 hover:border-neon-cyan/60 transition-all duration-500 hover-lift overflow-hidden"
+                  >
+                    {/* Animated Background Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className={`p-3 rounded-xl bg-${glowColor}/10 shadow-${glowColor} group-hover:scale-110 transition-transform duration-300`}>
+                          <metric.icon className={`h-7 w-7 text-${glowColor}`} />
+                        </div>
+                        <span className="text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded">#{index + 1}</span>
+                      </div>
+                      <h3 className="text-sm font-mono text-gray-300 mb-2 uppercase tracking-wider">{metric.title}</h3>
+                      <p className={`text-3xl font-bold text-${glowColor} mb-2 font-mono tracking-tight`}>{metric.value}</p>
+                      <p className="text-xs text-gray-400 leading-relaxed">{metric.status}</p>
+                    </div>
+                    
+                    {/* Corner Accent */}
+                    <div className={`absolute top-0 right-0 w-20 h-20 bg-${glowColor}/10 rounded-bl-full blur-xl opacity-50`}></div>
                   </div>
-                  <h3 className="text-sm font-mono text-gray-400 mb-1">{metric.title}</h3>
-                  <p className="text-2xl font-bold text-cyan-400 mb-2 font-mono">{metric.value}</p>
-                  <p className="text-xs text-gray-500">{metric.status}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
-            {/* Features Matrix */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Enhanced Features Matrix */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-gray-900/50 backdrop-blur-xl rounded-xl border border-gray-700/50 p-6 hover:border-cyan-500/30 transition-all duration-300 group scan-line"
+                  className="group relative glass-musical rounded-2xl border-2 border-neon-purple/20 p-8 hover:border-neon-purple/60 transition-all duration-500 hover-lift overflow-hidden"
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <feature.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white">{feature.title}</h3>
-                      <p className="text-xs font-mono text-gray-500">MODULE_{index + 1}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">{feature.description}</p>
-                  <div className="space-y-1">
-                    {feature.features.map((item, idx) => (
-                      <div key={idx} className="flex items-center text-xs text-gray-400">
-                        <div className="w-1 h-1 bg-cyan-400 rounded-full mr-2" />
-                        {item}
+                  {/* Animated Scan Line Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer-musical"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-5 mb-6">
+                      <div className="relative">
+                        {/* Icon Glow Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="relative w-16 h-16 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-neon-cyan">
+                          <feature.icon className="h-8 w-8 text-white drop-shadow-lg" />
+                        </div>
                       </div>
-                    ))}
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-white mb-1 group-hover:text-neon-cyan transition-colors duration-300">{feature.title}</h3>
+                        <p className="text-xs font-mono text-neon-purple uppercase tracking-widest">MODULE • {index + 1}</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-200 mb-6 text-sm leading-relaxed">{feature.description}</p>
+                    
+                    <div className="space-y-3">
+                      {feature.features.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-3 group/item">
+                          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-neon-cyan/20 flex items-center justify-center mt-0.5 group-hover/item:bg-neon-cyan/40 transition-colors duration-300">
+                            <div className="w-2 h-2 bg-neon-cyan rounded-full shadow-neon-cyan" />
+                          </div>
+                          <span className="text-sm text-gray-300 group-hover/item:text-white transition-colors duration-300">{item}</span>
+                        </div>
+                      ))}
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Call to Action */}
+            {/* Enhanced Call to Action */}
             <div className="text-center">
-              <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-cyan-500/30 p-8 cyber-glow">
-                <Search className="h-16 w-16 text-cyan-400 mx-auto mb-4" />
-                <h2 className="text-2xl font-bold text-white mb-2">INITIATE ANALYSIS</h2>
-                <p className="text-gray-400 font-mono">Search for an artist to begin deep intelligence gathering</p>
+              <div className="relative group">
+                {/* Glowing Background Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 via-neon-purple/20 to-neon-pink/20 rounded-3xl blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-glow"></div>
+                
+                {/* Main Container */}
+                <div className="relative glass-strong rounded-3xl border-2 border-neon-cyan/40 p-12 hover:border-neon-cyan/80 transition-all duration-500 overflow-hidden">
+                  {/* Animated Background Scan */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-purple/10 to-transparent animate-shimmer-musical"></div>
+                  
+                  <div className="relative z-10">
+                    {/* Icon with Musical Animation */}
+                    <div className="relative inline-block mb-6">
+                      <div className="absolute inset-0 bg-neon-cyan/30 rounded-full blur-2xl animate-pulse-glow"></div>
+                      <div className="relative w-24 h-24 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full flex items-center justify-center shadow-neon-cyan group-hover:scale-110 transition-transform duration-500">
+                        <Search className="h-12 w-12 text-white drop-shadow-lg" />
+                      </div>
+                      {/* Musical Note Accents */}
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-neon-green rounded-full flex items-center justify-center animate-bounce-slow shadow-neon-green">
+                        <Music className="h-4 w-4 text-white" />
+                      </div>
+                    </div>
+                    
+                    <h2 className="text-4xl font-bold text-white mb-3 tracking-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                      <span className="text-gradient-animate">INITIATE ANALYSIS</span>
+                    </h2>
+                    <p className="text-lg text-gray-300 font-mono mb-6 tracking-wide">
+                      🎵 Search for an artist to begin deep intelligence gathering 🎵
+                    </p>
+                    
+                    {/* Feature Pills */}
+                    <div className="flex flex-wrap justify-center gap-3">
+                      {['Real-time Data', 'Multi-platform', 'AI-Powered', 'Live Updates'].map((tag, i) => (
+                        <span key={i} className="px-4 py-2 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan text-sm font-mono hover:bg-neon-cyan/20 transition-colors duration-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </>
         ) : (
           // Artist Analysis Results
-          <div className="space-y-8">
-            {/* Artist Header */}
-            <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-cyan-500/30 p-8 cyber-glow">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-6">
-                  {artistData.spotify?.artist?.images?.[0]?.url ? (
-                    <img
-                      src={artistData.spotify.artist.images[0].url}
-                      alt={currentArtist}
-                      className="w-20 h-20 rounded-xl object-cover border-2 border-cyan-500/30"
-                    />
-                  ) : (
-                    <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center">
-                      <User className="h-10 w-10 text-white" />
+          <div className="space-y-10">
+            {/* Enhanced Artist Header */}
+            <div className="relative group">
+              {/* Glowing Background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 via-neon-purple/20 to-neon-pink/20 rounded-3xl blur-3xl opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative glass-strong rounded-3xl border-2 border-neon-cyan/40 p-10 hover:border-neon-cyan/80 transition-all duration-500 overflow-hidden">
+                {/* Animated Scan Line */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/10 to-transparent animate-shimmer-musical"></div>
+                
+                <div className="relative z-10 flex items-center justify-between">
+                  <div className="flex items-center gap-8">
+                    <div className="relative">
+                      {/* Artist Image with Glow */}
+                      {artistData.spotify?.artist?.images?.[0]?.url ? (
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-2xl blur-xl opacity-60"></div>
+                          <img
+                            src={artistData.spotify.artist.images[0].url}
+                            alt={currentArtist}
+                            className="relative w-28 h-28 rounded-2xl object-cover border-4 border-neon-cyan/40 shadow-neon-cyan"
+                          />
+                        </div>
+                      ) : (
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-2xl blur-xl opacity-60"></div>
+                          <div className="relative w-28 h-28 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-2xl flex items-center justify-center shadow-neon-cyan">
+                            <User className="h-14 w-14 text-white" />
+                          </div>
+                        </div>
+                      )}
+                      {/* Live Indicator */}
+                      <div className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-neon-green/20 border border-neon-green/50 flex items-center gap-1.5">
+                        <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse shadow-neon-green" />
+                        <span className="text-xs font-mono text-neon-green font-semibold">LIVE</span>
+                      </div>
                     </div>
-                  )}
-                  <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">{currentArtist}</h1>
-                    <div className="flex items-center gap-4 text-sm">
-                      <span className="font-mono text-cyan-400">
-                        ID: {artistData.spotify?.artist?.id?.slice(0, 8) || 'N/A'}
-                      </span>
-                      <div className="flex items-center text-gray-400">
-                        <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
-                        DATA STREAMING
+                    
+                    <div>
+                      <h1 className="text-4xl font-bold text-white mb-3 tracking-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                        <span className="text-gradient-animate">{currentArtist}</span>
+                      </h1>
+                      <div className="flex items-center gap-5 text-sm">
+                        <span className="font-mono text-neon-cyan bg-neon-cyan/10 px-3 py-1 rounded-lg border border-neon-cyan/30">
+                          ID: {artistData.spotify?.artist?.id?.slice(0, 8) || 'N/A'}
+                        </span>
+                      <div className="flex items-center text-gray-300 bg-neon-purple/10 px-3 py-1 rounded-lg border border-neon-purple/30">
+                        <Activity className="h-4 w-4 text-neon-purple mr-2" />
+                        <span className="font-mono text-neon-purple font-semibold">DATA STREAMING</span>
                       </div>
                     </div>
                   </div>
                 </div>
+                
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-cyan-400 font-mono">
-                    #{artistData.spotify?.artist?.popularity || 'N/A'}
+                  <div className="relative inline-block">
+                    <div className="absolute inset-0 bg-neon-pink/30 rounded-2xl blur-xl"></div>
+                    <div className="relative bg-neon-pink/10 border-2 border-neon-pink/40 rounded-2xl px-6 py-4">
+                      <div className="text-4xl font-bold text-neon-pink font-mono tracking-tight">
+                        #{artistData.spotify?.artist?.popularity || 'N/A'}
+                      </div>
+                      <div className="text-sm text-gray-300 font-mono uppercase tracking-wider mt-1">Popularity</div>
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-400">POPULARITY INDEX</div>
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Artist Profile */}
             <section>
