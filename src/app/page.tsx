@@ -179,7 +179,7 @@ export default function Home() {
               <div className="relative group">
                 {/* Animated Glow Effect */}
                 <div className="absolute -inset-2 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink rounded-2xl opacity-75 blur-lg group-hover:opacity-100 transition duration-500 animate-pulse-glow"></div>
-                <div className="relative w-14 h-14 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-2xl flex items-center justify-center cyber-glow shadow-neon-cyan vinyl-spin">
+                <div className="relative w-14 h-14 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-2xl flex items-center justify-center cyber-glow shadow-neon-cyan animate-pulse-glow">
                   <BarChart3 className="h-8 w-8 text-white drop-shadow-lg" />
                 </div>
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-neon-green to-emerald-400 rounded-full animate-pulse shadow-neon-green" />
@@ -230,7 +230,7 @@ export default function Home() {
                 <div className="relative w-28 h-28 glass-musical rounded-3xl border-2 border-neon-cyan/40 cyber-glow sound-ripple flex items-center justify-center">
                   <Database className="h-14 w-14 text-neon-cyan drop-shadow-lg" />
                   <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-neon-pink to-neon-purple rounded-full flex items-center justify-center animate-bounce-slow shadow-neon-pink">
-                    <Music className="h-4 w-4 text-white" />
+                    <Music className="h-4 w-4 text-white" aria-label="Music icon" />
                   </div>
                 </div>
               </div>
@@ -346,7 +346,7 @@ export default function Home() {
                       </div>
                       {/* Musical Note Accents */}
                       <div className="absolute -top-2 -right-2 w-8 h-8 bg-neon-green rounded-full flex items-center justify-center animate-bounce-slow shadow-neon-green">
-                        <Music className="h-4 w-4 text-white" />
+                        <Music className="h-4 w-4 text-white" aria-label="Music note decoration" />
                       </div>
                     </div>
                     

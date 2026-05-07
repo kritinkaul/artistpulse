@@ -13,7 +13,7 @@ module.exports = {
         'float': 'float 4s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 2.5s ease-in-out infinite',
         'gradient': 'gradient-shift 4s ease infinite',
-        'gradient-flow': 'gradient-flow 3s ease infinite',
+        'gradient-flow': 'gradient-shift 3s ease infinite',
         'bounce-slow': 'bounce 3s infinite',
         'music-wave': 'music-wave 1.5s ease-in-out infinite',
         'equalizer-bar': 'equalizer-bar 1.2s ease-in-out infinite',
@@ -41,10 +41,6 @@ module.exports = {
           '50%': { opacity: '1', transform: 'scale(1.08)' },
         },
         'gradient-shift': {
-          '0%, 100%': { 'background-position': '0% 50%' },
-          '50%': { 'background-position': '100% 50%' },
-        },
-        'gradient-flow': {
           '0%, 100%': { 'background-position': '0% 50%' },
           '50%': { 'background-position': '100% 50%' },
         },
