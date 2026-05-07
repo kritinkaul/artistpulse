@@ -320,6 +320,7 @@ export default function Home() {
                           <span className="text-sm text-gray-300 group-hover/item:text-white transition-colors duration-300">{item}</span>
                         </div>
                       ))}
+                    </div>
                   </div>
                 </div>
               ))}
