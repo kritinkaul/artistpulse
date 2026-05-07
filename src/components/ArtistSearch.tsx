@@ -181,35 +181,44 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
 
   return (
     <div className="relative">
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/30 to-slate-800/50 rounded-3xl blur-2xl"></div>
+      {/* Enhanced Musical Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 via-neon-purple/10 to-neon-pink/10 rounded-3xl blur-3xl animate-pulse-glow"></div>
       
-      <div className="relative bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-700/50 p-8 overflow-visible">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-3">ARTIST SEARCH INTERFACE</h2>
-          <p className="text-slate-400 text-lg">Multi-platform intelligence gathering system</p>
+      <div className="relative glass-strong rounded-3xl shadow-2xl border-2 border-neon-cyan/30 p-10 overflow-visible hover:border-neon-cyan/60 transition-all duration-500">
+        {/* Title Section with Musical Theme */}
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-white mb-4 tracking-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+            <span className="text-gradient-animate">🎵 ARTIST SEARCH 🎵</span>
+          </h2>
+          <p className="text-gray-300 text-lg font-mono">Multi-platform Intelligence Gathering System</p>
         </div>
         
         <form onSubmit={handleSearch} className="mb-8">
-          {/* Clean Search Container */}
+          {/* Enhanced Search Container */}
           <div className="relative max-w-4xl mx-auto">
-            {/* Elegant Search Input */}
-            <div className="relative group search-input-focus" ref={searchRef}>
-              {/* Refined glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-indigo-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500"></div>
+            {/* Musical Search Input */}
+            <div className="relative group" ref={searchRef}>
+              {/* Enhanced glow effect with musical colors */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-neon-cyan/30 via-neon-purple/30 to-neon-pink/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 animate-pulse-glow"></div>
               
-              {/* Main search container with clean design */}
-              <div className="relative bg-slate-800/90 backdrop-blur-xl rounded-2xl border border-slate-600/50 shadow-xl overflow-hidden">
-                <div className="flex items-center">
-                  {/* Elegant search icon */}
-                  <div className="flex items-center justify-center w-16 h-16 ml-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center shadow-lg">
-                      <Search className="h-4 w-4 text-white" />
+              {/* Main search container with premium glassmorphism */}
+              <div className="relative glass-musical rounded-3xl border-2 border-neon-cyan/40 shadow-neon-cyan overflow-hidden hover:border-neon-cyan/80 transition-all duration-500">
+                {/* Animated scan line effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-purple/10 to-transparent animate-shimmer-musical pointer-events-none"></div>
+                
+                <div className="relative flex items-center">
+                  {/* Enhanced Musical Search Icon */}
+                  <div className="flex items-center justify-center w-20 h-20 ml-6">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-neon-cyan/30 rounded-2xl blur-lg animate-pulse"></div>
+                      <div className="relative w-12 h-12 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-2xl flex items-center justify-center shadow-neon-cyan">
+                        <Search className="h-6 w-6 text-white drop-shadow-lg" />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Clean input field */}
-                  <div className="flex-1 px-4">
+                  {/* Enhanced input field */}
+                  <div className="flex-1 px-6">
                     <input
                       ref={inputRef}
                       type="text"
@@ -241,41 +250,46 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
                         }, 150);
                       }}
                       placeholder={query.length === 0 ? placeholderSuggestions[currentPlaceholder] : ""}
-                      className="w-full h-16 bg-transparent text-lg font-medium text-white placeholder-slate-400 focus:outline-none transition-all duration-300"
+                      className="w-full h-20 bg-transparent text-xl font-semibold text-white placeholder-gray-400/60 focus:outline-none transition-all duration-300"
                       disabled={isLoading}
                     />
                   </div>
 
-                  {/* Modern analyze button */}
-                  <div className="pr-3">
+                  {/* Enhanced Musical Analyze Button */}
+                  <div className="pr-5">
                     <button
                       type="submit"
                       disabled={isLoading || !query.trim()}
-                      className="relative overflow-hidden px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl hover:from-cyan-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                      className="relative group overflow-hidden px-8 py-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink text-white rounded-2xl hover:shadow-neon-cyan disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-3 font-bold text-lg shadow-xl transform hover:scale-105 transition-all duration-500"
+                      style={{ fontFamily: "'Orbitron', sans-serif" }}
                     >
-                      {isLoading ? (
-                        <>
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                          <span>Analyzing...</span>
-                        </>
-                      ) : (
-                        <>
-                          <Search className="h-4 w-4" />
-                          <span>Analyze</span>
-                        </>
-                      )}
+                      {/* Animated Background */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-neon-pink via-neon-purple to-neon-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      <div className="relative z-10 flex items-center gap-3">
+                        {isLoading ? (
+                          <>
+                            <Loader2 className="h-5 w-5 animate-spin" />
+                            <span>Analyzing...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Search className="h-5 w-5" />
+                            <span>ANALYZE</span>
+                          </>
+                        )}
+                      </div>
                     </button>
                   </div>
                 </div>
               </div>
-              
-              {/* Clean dropdown suggestions */}
+              {/* Enhanced dropdown suggestions with musical theme */}
               {showDropdown && (suggestions.length > 0 || isLoadingSuggestions) && (
-                <div className="absolute top-full left-0 right-0 mt-3 bg-slate-800/95 backdrop-blur-xl border border-slate-600/50 rounded-xl shadow-2xl z-[9999] max-h-80 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-4 glass-musical border-2 border-neon-purple/40 rounded-2xl shadow-neon-purple z-[9999] max-h-80 overflow-y-auto">
                   {isLoadingSuggestions ? (
-                    <div className="p-6 text-center">
-                      <Loader2 className="h-5 w-5 animate-spin mx-auto text-cyan-400" />
-                      <p className="text-sm text-slate-400 mt-3">Searching artists...</p>
+                    <div className="p-8 text-center">
+                      <Loader2 className="h-6 w-6 animate-spin mx-auto text-neon-cyan" />
+                      <p className="text-sm text-gray-300 mt-4 font-mono">Searching artists...</p>
                     </div>
                   ) : (
                     suggestions.map((artist, index) => (
@@ -288,27 +302,33 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
                           // Immediately handle the click
                           handleSuggestionClick(artist.name);
                         }}
-                        className={`w-full text-left p-4 hover:bg-slate-700/50 transition-all duration-200 flex items-center gap-4 border-b border-slate-700/30 last:border-b-0 ${
-                          index === selectedIndex ? 'bg-slate-700/70' : ''
+                        className={`w-full text-left p-5 hover:bg-neon-cyan/10 transition-all duration-300 flex items-center gap-5 border-b border-neon-purple/20 last:border-b-0 ${
+                          index === selectedIndex ? 'bg-neon-purple/20' : ''
                         }`}
                       >
                         <div className="flex-shrink-0">
                           {artist.image ? (
-                            <img
-                              src={artist.image}
-                              alt={artist.name}
-                              className="w-12 h-12 rounded-full object-cover shadow-md border border-slate-600/50"
-                            />
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-neon-cyan/30 rounded-full blur-md"></div>
+                              <img
+                                src={artist.image}
+                                alt={artist.name}
+                                className="relative w-14 h-14 rounded-full object-cover shadow-neon-cyan border-2 border-neon-cyan/40"
+                              />
+                            </div>
                           ) : (
-                            <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center shadow-md">
-                              <User className="h-6 w-6 text-white" />
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-neon-cyan/30 rounded-full blur-md"></div>
+                              <div className="relative w-14 h-14 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-full flex items-center justify-center shadow-neon-cyan">
+                                <User className="h-7 w-7 text-white" />
+                              </div>
                             </div>
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-white truncate">{artist.name}</p>
+                          <p className="font-bold text-white truncate text-lg">{artist.name}</p>
                           {artist.followers && (
-                            <p className="text-sm text-slate-400">
+                            <p className="text-sm text-neon-cyan font-mono">
                               {(artist.followers / 1000000).toFixed(1)}M followers
                             </p>
                           )}
@@ -323,8 +343,8 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
         </form>
 
         {error && (
-          <div className="max-w-2xl mx-auto p-4 bg-red-900/30 border border-red-500/30 rounded-xl">
-            <p className="text-red-400 text-center font-medium">{error}</p>
+          <div className="max-w-2xl mx-auto p-5 glass-musical border-2 border-red-500/50 rounded-2xl shadow-lg">
+            <p className="text-red-400 text-center font-bold text-lg">{error}</p>
           </div>
         )}
       </div>
