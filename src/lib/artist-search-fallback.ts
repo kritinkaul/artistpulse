@@ -80,7 +80,26 @@ function isReasonableMatch(name: string, query: string) {
 
   const nameParts = n.split(' ').filter(Boolean);
   const queryParts = q.split(' ').filter((part) => part.length > 2);
-  return queryParts.length > 0 && queryParts.every((part) => nameParts.some((namePart) => namePart.includes(part) || part.includes(namePart)));
+  return queryParts.length >= 2 && queryParts.every((part) =>
+    nameParts.some((namePart) => namePart.includes(part) || part.includes(namePart))
+  );
+}
+
+function bestExactMatch(candidates: ArtistSuggestion[], name: string): ArtistSuggestion | undefined {
+  const key = normalizeName(name);
+  return candidates
+    .filter((candidate) => normalizeName(candidate.name) === key)
+    .sort((a, b) => (b.followers || 0) - (a.followers || 0))[0];
+}
+
+function enrichFromSources(artist: ArtistSuggestion, sources: ArtistSuggestion[]): ArtistSuggestion {
+  const match = bestExactMatch(sources, artist.name);
+  if (!match) return artist;
+  return {
+    ...artist,
+    image: artist.image || match.image,
+    followers: Math.max(artist.followers || 0, match.followers || 0) || artist.followers,
+  };
 }
 
 export async function searchArtistsFallback(query: string): Promise<ArtistSuggestion[]> {
@@ -90,45 +109,42 @@ export async function searchArtistsFallback(query: string): Promise<ArtistSugges
     fetchLastfmArtists(query),
   ]);
 
-  const byName = new Map<string, ArtistSuggestion>();
+  const primary = (itunes.length ? itunes : deezer.length ? deezer : lastfm)
+    .filter((artist) => isReasonableMatch(artist.name, query));
 
-  const merge = (artist: ArtistSuggestion) => {
-    if (!isReasonableMatch(artist.name, query)) return;
-    const key = normalizeName(artist.name);
-    if (!key) return;
-    const existing = byName.get(key);
-    if (!existing) {
-      byName.set(key, { ...artist });
-      return;
-    }
-    existing.image = existing.image || artist.image;
-    existing.followers = existing.followers || artist.followers;
-    if (!existing.genres?.length && artist.genres?.length) {
-      existing.genres = artist.genres;
-    }
-  };
-
-  // iTunes ranks well for music artists; Deezer/Last.fm fill images and extras.
-  itunes.forEach(merge);
-  deezer.forEach(merge);
-  lastfm.forEach(merge);
-
-  const preferred = itunes.length ? itunes : deezer.length ? deezer : lastfm;
-  const ranked: ArtistSuggestion[] = [];
   const seen = new Set<string>();
+  const ranked: ArtistSuggestion[] = [];
 
-  for (const artist of preferred) {
+  for (const artist of primary) {
     const key = normalizeName(artist.name);
     if (seen.has(key)) continue;
-    const merged = byName.get(key);
-    if (!merged) continue;
     seen.add(key);
-    ranked.push(merged);
+    ranked.push(enrichFromSources(enrichFromSources(artist, lastfm), deezer));
   }
 
-  const extra = Array.from(byName.values()).filter((artist) => !seen.has(normalizeName(artist.name)));
+  const extras = [...lastfm, ...deezer]
+    .filter((artist) => isReasonableMatch(artist.name, query) && (artist.followers || 0) >= 10000)
+    .sort((a, b) => (b.followers || 0) - (a.followers || 0));
 
-  return [...ranked, ...extra].slice(0, 10);
+  for (const artist of extras) {
+    const key = normalizeName(artist.name);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    ranked.push(artist);
+  }
+
+  const missingImages = ranked.filter((artist) => !artist.image).slice(0, 4);
+  if (missingImages.length > 0) {
+    const lookups = await Promise.all(missingImages.map((artist) => fetchDeezerArtists(artist.name)));
+    missingImages.forEach((artist, index) => {
+      const match = bestExactMatch(lookups[index], artist.name);
+      if (!match) return;
+      artist.image = match.image;
+      artist.followers = Math.max(artist.followers || 0, match.followers || 0) || artist.followers;
+    });
+  }
+
+  return ranked.slice(0, 10);
 }
 
 export function toSpotifyLikeArtist(artist: ArtistSuggestion) {
