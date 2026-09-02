@@ -46,8 +46,8 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const [isSelecting, setIsSelecting] = useState(false);
-  const [suppressSuggestions, setSuppressSuggestions] = useState(false);
   const [listMaxHeight, setListMaxHeight] = useState(280);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -82,7 +82,9 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
   }, [showDropdown, query]);
 
   useEffect(() => {
-    if (suppressSuggestions || isSelecting) {
+    if (!isInputFocused || isSelecting) {
+      setShowDropdown(false);
+      setIsLoadingSuggestions(false);
       return;
     }
 
@@ -120,11 +122,12 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
       clearTimeout(timer);
       requestIdRef.current += 1;
     };
-  }, [query, isSelecting, suppressSuggestions]);
+  }, [query, isInputFocused, isSelecting]);
 
   useEffect(() => {
     const handlePointerOutside = (event: Event) => {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsInputFocused(false);
         setShowDropdown(false);
         setSelectedIndex(-1);
       }
@@ -148,7 +151,7 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
     if (!trimmed) return;
 
     setIsSelecting(true);
-    setSuppressSuggestions(true);
+    setIsInputFocused(false);
     setShowDropdown(false);
     setSelectedIndex(-1);
     setSuggestions([]);
@@ -222,7 +225,7 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
     await runArtistSearch(query);
   };
 
-  const showSuggestionPanel = showDropdown && query.trim().length > 1 && !suppressSuggestions;
+  const showSuggestionPanel = isInputFocused && showDropdown && query.trim().length > 1;
 
   return (
     <div className="relative">
@@ -256,13 +259,15 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
                         onChange={(e) => {
                           setQuery(e.target.value);
                           setIsTyping(e.target.value.length > 0);
-                          setSuppressSuggestions(false);
+                          setIsInputFocused(true);
+                          setShowDropdown(e.target.value.trim().length > 1);
                           setError('');
                         }}
                         onKeyDown={handleKeyDown}
                         onFocus={() => {
                           setIsTyping(true);
-                          if (!suppressSuggestions && query.length > 1) {
+                          setIsInputFocused(true);
+                          if (query.trim().length > 1) {
                             setShowDropdown(true);
                           }
                           window.setTimeout(() => {
