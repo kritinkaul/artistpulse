@@ -264,6 +264,12 @@ export default function ArtistSearch({ onArtistFound }: ArtistSearchProps) {
                           setError('');
                         }}
                         onKeyDown={handleKeyDown}
+                        onPointerDown={() => {
+                          if (!isLoading && query.trim().length > 1) {
+                            setIsInputFocused(true);
+                            setShowDropdown(true);
+                          }
+                        }}
                         onFocus={() => {
                           setIsTyping(true);
                           setIsInputFocused(true);
