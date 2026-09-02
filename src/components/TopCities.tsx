@@ -154,7 +154,7 @@ export default function TopCities({ artistName }: TopCitiesProps) {
       <div className="relative group">
         {/* Enhanced background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-blue-600/20 to-purple-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-8 transition-all duration-300 shadow-2xl">
+        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
           <div className="flex items-center justify-center space-x-2 text-cyan-400">
             <Loader2 className="h-5 w-5 animate-spin" />
             <span className="text-sm font-mono">LOADING TOP CITIES...</span>
@@ -169,7 +169,7 @@ export default function TopCities({ artistName }: TopCitiesProps) {
       <div className="relative group">
         {/* Enhanced background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-blue-600/20 to-purple-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-red-500/30 p-8 transition-all duration-300 shadow-2xl">
+        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-red-500/30 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
           <div className="text-red-400 text-sm font-mono text-center">{error}</div>
         </div>
       </div>
@@ -181,7 +181,7 @@ export default function TopCities({ artistName }: TopCitiesProps) {
       <div className="relative group">
         {/* Enhanced background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-blue-600/20 to-purple-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-8 transition-all duration-300 shadow-2xl">
+        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
           <div className="text-gray-400 text-sm font-mono text-center">No city data available</div>
         </div>
       </div>
@@ -192,14 +192,14 @@ export default function TopCities({ artistName }: TopCitiesProps) {
     <div className="relative group">
       {/* Enhanced background */}
       <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-blue-600/20 to-purple-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-      <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-purple-500/50 p-8 transition-all duration-300 shadow-2xl">
+      <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-purple-500/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
         {/* Subtle overlay */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl"></div>
         </div>
         
         <div className="relative z-10">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8">
             <div className="flex items-center gap-4">
               <div className="relative">
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">

@@ -114,7 +114,7 @@ export default function CareerTimeline({ artistName }: CareerTimelineProps) {
       <div className="relative group">
         {/* Enhanced background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-purple-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-8 transition-all duration-300 shadow-2xl">
+        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
           <div className="flex items-center justify-center space-x-2 text-cyan-400">
             <Loader2 className="h-5 w-5 animate-spin" />
             <span className="text-sm font-mono">ANALYZING CAREER DATA...</span>
@@ -144,14 +144,14 @@ export default function CareerTimeline({ artistName }: CareerTimelineProps) {
       <div className="relative group">
         {/* Enhanced background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-purple-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-purple-500/50 p-8 transition-all duration-300 shadow-2xl">
+        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-purple-500/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
           {/* Subtle overlay */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl"></div>
           </div>
           
           <div className="relative z-10">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8">
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
@@ -174,12 +174,12 @@ export default function CareerTimeline({ artistName }: CareerTimelineProps) {
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex space-x-1 mb-8 bg-gray-800/50 p-1 rounded-xl border border-gray-700/50">
+            <div className="flex overflow-x-auto space-x-1 mb-6 sm:mb-8 bg-gray-800/50 p-1 rounded-xl border border-gray-700/50">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex-1 px-4 py-3 text-xs font-medium rounded-lg transition-all duration-200 font-mono ${
+                  className={`flex-1 min-w-[5.5rem] px-3 sm:px-4 py-3 text-xs font-medium rounded-lg transition-all duration-200 font-mono touch-manipulation ${
                     activeTab === tab.id
                       ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30 shadow-lg'
                       : 'text-gray-400 hover:text-purple-300 hover:bg-gray-700/50'

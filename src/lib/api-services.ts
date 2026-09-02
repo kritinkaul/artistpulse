@@ -222,7 +222,12 @@ export const spotifyApi = {
         }
       });
       
-      // Return the full response data which includes artist, albums, and topTracks
+      // Only treat a real artist payload as a hit. Empty search results come
+      // back as { artists: { items: [] } } and should not look like success.
+      if (!response.data?.artist?.id && !response.data?.artist?.name) {
+        return null;
+      }
+
       return response.data;
     } catch (error) {
       console.error('Spotify artist search error:', error);

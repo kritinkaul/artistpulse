@@ -89,7 +89,7 @@ export default function YouTubeAnalytics({ artistName }: YouTubeAnalyticsProps) 
 
   if (isLoading) {
     return (
-      <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-6 cyber-glow">
+      <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-4 sm:p-6 cyber-glow">
         <div className="animate-pulse">
           <div className="h-6 bg-gray-700 rounded w-1/3 mb-6"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -112,7 +112,7 @@ export default function YouTubeAnalytics({ artistName }: YouTubeAnalyticsProps) 
     const isConfigError = error.includes('configuration issue');
     
     return (
-      <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-6 cyber-glow">
+      <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-4 sm:p-6 cyber-glow">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 bg-gradient-to-r from-red-400 to-red-600 rounded-xl flex items-center justify-center shadow-lg cyber-glow">
             <Play className="h-5 w-5 text-white" />
@@ -177,8 +177,8 @@ export default function YouTubeAnalytics({ artistName }: YouTubeAnalyticsProps) 
   const totalStats = getTotalStats();
 
   return (
-    <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-6 cyber-glow">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-4 sm:p-6 cyber-glow">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-r from-red-400 to-red-600 rounded-xl flex items-center justify-center shadow-lg cyber-glow">
             <Play className="h-5 w-5 text-white" />

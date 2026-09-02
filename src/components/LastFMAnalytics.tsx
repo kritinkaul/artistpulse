@@ -22,7 +22,7 @@ interface LastFMAnalyticsProps {
 export default function LastFMAnalytics({ lastfmData }: LastFMAnalyticsProps) {
   if (!lastfmData?.artist?.stats) {
     return (
-      <div className="bg-gradient-to-br from-gray-900 to-gray-800 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-gray-700/50">
+      <div className="bg-gradient-to-br from-gray-900 to-gray-800 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 shadow-xl border border-gray-700/50">
         <div className="flex items-center gap-4 mb-6">
           <div className="relative">
             <div className="w-12 h-12 bg-gradient-to-r from-red-500 via-red-600 to-red-700 rounded-xl flex items-center justify-center shadow-lg">
@@ -50,7 +50,7 @@ export default function LastFMAnalytics({ lastfmData }: LastFMAnalyticsProps) {
   }
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-gray-700/50">
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 shadow-xl border border-gray-700/50">
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 via-red-600/10 to-red-700/10 rounded-xl blur-2xl"></div>
         
