@@ -31,7 +31,7 @@ export const API_CONFIG = {
   lastfm: {
     apiKey: 'a2a170deeb59d92b91b550d6016c020f',
     sharedSecret: '7db66062a7b3b01af0d1b9e061a50ff6',
-    baseUrl: 'http://ws.audioscrobbler.com/2.0'
+    baseUrl: 'https://ws.audioscrobbler.com/2.0'
   },
   musicbrainz: {
     baseUrl: 'https://musicbrainz.org/ws/2',

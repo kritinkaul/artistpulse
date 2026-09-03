@@ -17,6 +17,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'lastfm-img.freetls.fastly.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'lastfm-img2.akamaized.net',
         port: '',
         pathname: '/**',

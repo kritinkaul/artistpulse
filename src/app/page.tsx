@@ -42,9 +42,14 @@ export default function Home() {
   const [artistData, setArtistData] = useState<any>(null);
   const [currentArtist, setCurrentArtist] = useState<string>('');
 
+  useEffect(() => {
+    if (!artistData) return;
+    document.getElementById('artist-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [artistData]);
+
   const handleArtistFound = (data: any) => {
     setArtistData(data);
-    setCurrentArtist(data.spotify?.artist?.name || 'Unknown Artist');
+    setCurrentArtist(data.spotify?.artist?.name || data.lastfm?.artist?.name || 'Unknown Artist');
   };
 
   const metrics = [
@@ -124,7 +129,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gray-900 relative overflow-x-hidden">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 grid-background opacity-30"></div>
       {/* Floating Data Particles (client-only to avoid hydration mismatches) */}
@@ -148,22 +153,22 @@ export default function Home() {
       {/* Header */}
       <header className="relative z-10 border-b border-gray-800/50 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="relative group">
-                <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center cyber-glow">
-                  <BarChart3 className="h-6 w-6 text-white" />
+          <div className="flex items-center justify-between h-14 sm:h-16 gap-2 min-w-0">
+            <div className="flex items-center min-w-0">
+              <div className="relative group shrink-0">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center cyber-glow">
+                  <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse" />
               </div>
-              <div className="ml-3">
-                <h1 className="text-xl font-bold text-white">ArtistPulse</h1>
-                <p className="text-xs text-cyan-400 font-mono">v2.0 • HIGH-FREQUENCY DATA</p>
+              <div className="ml-2 sm:ml-3 min-w-0">
+                <h1 className="text-lg sm:text-xl font-bold text-white truncate">ArtistPulse</h1>
+                <p className="text-[10px] sm:text-xs text-cyan-400 font-mono truncate">v2.0 • HIGH-FREQUENCY DATA</p>
               </div>
             </div>
             
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center text-sm font-medium text-gray-300">
+            <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+              <div className="hidden sm:flex items-center text-xs sm:text-sm font-medium text-gray-300">
                 <span className="text-cyan-400 font-mono">Made by</span>
                 <span className="ml-2 text-white font-semibold">Kritin</span>
               </div>
@@ -178,7 +183,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8">
         {/* Search Interface */}
         <div className="mb-8">
           <ArtistSearch onArtistFound={handleArtistFound} />
@@ -189,14 +194,14 @@ export default function Home() {
           <>
             {/* Command Center Header */}
             <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-gray-900 rounded-2xl border border-cyan-500/30 cyber-glow mb-6 scan-line">
-                <Database className="h-12 w-12 text-cyan-400" />
+              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 bg-gray-900 rounded-2xl border border-cyan-500/30 cyber-glow mb-6 scan-line">
+                <Database className="h-8 w-8 sm:h-12 sm:w-12 text-cyan-400" />
               </div>
-              <h1 className="text-4xl font-bold text-white mb-4">
+              <h1 className="text-2xl sm:text-4xl font-bold text-white mb-4">
                 ARTIST INTELLIGENCE
-                <span className="block text-lg font-mono text-cyan-400 mt-2">PLATFORM</span>
+                <span className="block text-base sm:text-lg font-mono text-cyan-400 mt-2">PLATFORM</span>
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 Advanced multi-platform analytics engine providing real-time insights across 
                 <span className="text-cyan-400 font-semibold"> Spotify</span>, 
                 <span className="text-purple-400 font-semibold"> YouTube</span>, 
@@ -255,34 +260,34 @@ export default function Home() {
 
             {/* Call to Action */}
             <div className="text-center">
-              <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-cyan-500/30 p-8 cyber-glow">
-                <Search className="h-16 w-16 text-cyan-400 mx-auto mb-4" />
-                <h2 className="text-2xl font-bold text-white mb-2">INITIATE ANALYSIS</h2>
-                <p className="text-gray-400 font-mono">Search for an artist to begin deep intelligence gathering</p>
+              <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-cyan-500/30 p-5 sm:p-8 cyber-glow">
+                <Search className="h-12 w-12 sm:h-16 sm:w-16 text-cyan-400 mx-auto mb-4" />
+                <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">INITIATE ANALYSIS</h2>
+                <p className="text-gray-400 font-mono text-sm sm:text-base">Search for an artist to begin deep intelligence gathering</p>
               </div>
             </div>
           </>
         ) : (
           // Artist Analysis Results
-          <div className="space-y-8">
+          <div id="artist-results" className="space-y-8 scroll-mt-4">
             {/* Artist Header */}
-            <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-cyan-500/30 p-8 cyber-glow">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-6">
+            <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl border border-cyan-500/30 p-4 sm:p-8 cyber-glow">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="flex items-center gap-4 sm:gap-6 min-w-0">
                   {artistData.spotify?.artist?.images?.[0]?.url ? (
                     <img
                       src={artistData.spotify.artist.images[0].url}
                       alt={currentArtist}
-                      className="w-20 h-20 rounded-xl object-cover border-2 border-cyan-500/30"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border-2 border-cyan-500/30 shrink-0"
                     />
                   ) : (
-                    <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center">
-                      <User className="h-10 w-10 text-white" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center shrink-0">
+                      <User className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                     </div>
                   )}
-                  <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">{currentArtist}</h1>
-                    <div className="flex items-center gap-4 text-sm">
+                  <div className="min-w-0">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2 break-words">{currentArtist}</h1>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm">
                       <span className="font-mono text-cyan-400">
                         ID: {artistData.spotify?.artist?.id?.slice(0, 8) || 'N/A'}
                       </span>
@@ -293,7 +298,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right shrink-0">
                   <div className="text-2xl font-bold text-cyan-400 font-mono">
                     #{artistData.spotify?.artist?.popularity || 'N/A'}
                   </div>
@@ -304,7 +309,7 @@ export default function Home() {
 
             {/* Artist Profile */}
             <section>
-              <h2 className="text-2xl font-bold text-white mb-6 font-mono">
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 font-mono">
                 <span className="text-cyan-400">&gt;</span> ARTIST PROFILE
               </h2>
               <ArtistOverview artistName={currentArtist} />
@@ -312,7 +317,7 @@ export default function Home() {
 
             {/* Platform Analytics */}
             <section>
-              <h2 className="text-2xl font-bold text-white mb-6 font-mono">
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 font-mono">
                 <span className="text-cyan-400">&gt;</span> PLATFORM ANALYTICS
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -345,7 +350,7 @@ export default function Home() {
 
             {/* News & Events Section */}
             <section>
-              <h2 className="text-2xl font-bold text-white mb-6 font-mono">
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 font-mono">
                 <span className="text-cyan-400">&gt;</span> NEWS & EVENTS
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -364,7 +369,7 @@ export default function Home() {
 
             {/* Geographic Analysis */}
             <section>
-              <h2 className="text-2xl font-bold text-white mb-6 font-mono">
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 font-mono">
                 <span className="text-cyan-400">&gt;</span> GEOGRAPHIC ANALYSIS
               </h2>
               <div className="space-y-8">
@@ -372,14 +377,14 @@ export default function Home() {
                 <GoogleTrends googleTrends={artistData.googleTrends} />
                 
                 <div className="relative">
-                  <div className="absolute top-0 right-0 bg-yellow-500/20 border border-yellow-500/50 rounded-lg px-3 py-1 text-xs font-mono text-yellow-400 z-10">
+                  <div className="absolute top-2 right-2 sm:top-0 sm:right-0 bg-yellow-500/20 border border-yellow-500/50 rounded-lg px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-mono text-yellow-400 z-10">
                     ⚠ ESTIMATED DATA
                   </div>
                   <TopCities artistName={currentArtist} />
                 </div>
                 
                 <div className="relative">
-                  <div className="absolute top-0 right-0 bg-yellow-500/20 border border-yellow-500/50 rounded-lg px-3 py-1 text-xs font-mono text-yellow-400 z-10">
+                  <div className="absolute top-2 right-2 sm:top-0 sm:right-0 bg-yellow-500/20 border border-yellow-500/50 rounded-lg px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-mono text-yellow-400 z-10">
                     ⚠ ESTIMATED DATA
                   </div>
                   <Demographics artistName={currentArtist} lastfmData={artistData.lastfm} />

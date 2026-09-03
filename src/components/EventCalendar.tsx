@@ -93,7 +93,7 @@ export default function EventCalendar({ artistName }: EventCalendarProps) {
       <div className="relative group">
         {/* Enhanced background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-blue-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-8 transition-all duration-300 shadow-2xl">
+        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
           <div className="animate-pulse">
             <div className="h-6 bg-gray-700 rounded w-1/3 mb-6"></div>
             <div className="space-y-4">
@@ -112,7 +112,7 @@ export default function EventCalendar({ artistName }: EventCalendarProps) {
       <div className="relative group">
         {/* Enhanced background */}
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-blue-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-blue-500/50 p-8 transition-all duration-300 shadow-2xl">
+        <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-blue-500/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
           {/* Subtle overlay */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl"></div>
@@ -152,14 +152,14 @@ export default function EventCalendar({ artistName }: EventCalendarProps) {
     <div className="relative group">
       {/* Enhanced background */}
       <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-blue-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-75"></div>
-      <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-blue-500/50 p-8 transition-all duration-300 shadow-2xl">
+      <div className="relative bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-blue-500/50 p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-2xl">
         {/* Subtle overlay */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl"></div>
         </div>
         
         <div className="relative z-10">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8">
             <div className="flex items-center gap-4">
               <div className="relative">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">

@@ -222,7 +222,12 @@ export const spotifyApi = {
         }
       });
       
-      // Return the full response data which includes artist, albums, and topTracks
+      // Only treat a real artist payload as a hit. Empty search results come
+      // back as { artists: { items: [] } } and should not look like success.
+      if (!response.data?.artist?.id && !response.data?.artist?.name) {
+        return null;
+      }
+
       return response.data;
     } catch (error) {
       console.error('Spotify artist search error:', error);
@@ -236,11 +241,28 @@ export const spotifyApi = {
         params: { 
           q: query,
           suggestions: 'true'
-        }
+        },
+        timeout: 8000
       });
-      return response.data.artists || [];
+      if (response.data.artists?.length) {
+        return response.data.artists;
+      }
     } catch (error) {
       console.error('Spotify suggestions error:', error);
+    }
+
+    // Browser fallback so the dropdown still works if the API route fails.
+    try {
+      const response = await fetch(
+        `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=musicArtist&limit=10`
+      );
+      const data = await response.json();
+      return (data.results || []).map((artist: any) => ({
+        id: artist.artistId ? `itunes-${artist.artistId}` : artist.artistName,
+        name: artist.artistName,
+      })).filter((artist: any) => Boolean(artist.name));
+    } catch (error) {
+      console.error('iTunes suggestions fallback error:', error);
       return [];
     }
   },
